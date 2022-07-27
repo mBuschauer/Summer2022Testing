@@ -16,16 +16,9 @@ public class CyGoat {
     public DcMotor back_left = null;
     public DcMotor back_right = null;
 
-    public DcMotor intake = null;
-    public DcMotor wheelTurn = null;
-
-    public DcMotor extendMotor = null;
-    public DcMotor slideTurnMotor = null;
-    public Servo boxTurn = null;
-
     public BNO055IMU imu;
 
-    HardwareMap hwMap = null;
+//    HardwareMap hwMap = null;
 
     public CyGoat() {
     }
@@ -58,42 +51,6 @@ public class CyGoat {
         front_right.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         back_left.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         back_right.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-
-        // Intake
-
-        intake = hwMap.dcMotor.get("intake");
-
-        intake.setDirection(DcMotor.Direction.FORWARD);
-        intake.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        intake.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        intake.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-
-        // Ducky
-
-        wheelTurn = hwMap.dcMotor.get("wheelTurn");
-
-        wheelTurn.setDirection(DcMotor.Direction.FORWARD);
-        wheelTurn.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        wheelTurn.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        wheelTurn.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-
-        // Linear Slide (On Extension Hub)
-        extendMotor = hwMap.dcMotor.get("extendMotor");
-        slideTurnMotor = hwMap.dcMotor.get("slideTurnMotor");
-        boxTurn = hwMap.servo.get("boxTurn");
-
-
-        extendMotor.setDirection(DcMotor.Direction.FORWARD);
-        slideTurnMotor.setDirection(DcMotor.Direction.FORWARD);
-
-        extendMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        slideTurnMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-
-        extendMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        slideTurnMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-
-        extendMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        slideTurnMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
         // IMU
         imu = hwMap.get(BNO055IMU.class, "imu");
